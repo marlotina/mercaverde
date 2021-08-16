@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D7EE705-427A-48E9-9465-5BAEA5E5D65E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MS.CommandQuery.Core</RootNamespace>
+    <AssemblyName>MS.CommandQuery.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web\MS.Extranet\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\Web\MS.Extranet\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Common\SaveSuggestingCommand.cs" />
+    <Compile Include="Commands\Common\TaskCommand.cs" />
+    <Compile Include="Commands\Common\SaveStoreCategoriesCommand.cs" />
+    <Compile Include="Commands\Common\SaveStoreLabelsCommand.cs" />
+    <Compile Include="Commands\Posts\DeletePostCommand.cs" />
+    <Compile Include="Commands\Posts\SavePostCommand.cs" />
+    <Compile Include="Commands\Stores\DeleteStoreImagesCommand.cs" />
+    <Compile Include="Commands\Stores\DeleteStoreCommand.cs" />
+    <Compile Include="Commands\Stores\PublishStoreCommand.cs" />
+    <Compile Include="Commands\Stores\SaveStoreImagesOrderCommand.cs" />
+    <Compile Include="Commands\Stores\SaveStoreDescriptionCommand.cs" />
+    <Compile Include="Commands\Stores\SaveStoreImagesCommand.cs" />
+    <Compile Include="Commands\Stores\SaveStoreCommand.cs" />
+    <Compile Include="Commands\Task\UpdateTasProcessCommand.cs" />
+    <Compile Include="Commands\Users\RecoverPasswordCommand.cs" />
+    <Compile Include="Commands\Users\SaveUserCommand.cs" />
+    <Compile Include="Base\CommandValidationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\ICommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\ICommandDispatcher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\ICommandExecutor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\ICommandHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\ICommandValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\IValidationHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\ValidationResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\CMS\MailTemplate.cs" />
+    <Compile Include="Entities\CMS\MailTemplateLanguage.cs" />
+    <Compile Include="Entities\CMS\Post.cs" />
+    <Compile Include="Entities\CMS\PostComment.cs" />
+    <Compile Include="Entities\CMS\Event.cs" />
+    <Compile Include="Entities\CMS\NewsItem.cs" />
+    <Compile Include="Entities\CMS\NewsComment.cs" />
+    <Compile Include="Entities\CMS\TextAndTextTypes.cs" />
+    <Compile Include="Entities\CMS\TextLanguage.cs" />
+    <Compile Include="Entities\CMS\Text.cs" />
+    <Compile Include="Entities\CMS\TextType.cs" />
+    <Compile Include="Entities\Common\Category.cs" />
+    <Compile Include="Entities\Common\Suggesting.cs" />
+    <Compile Include="Entities\Common\LabelLanguage.cs" />
+    <Compile Include="Entities\Common\Label.cs" />
+    <Compile Include="Entities\Common\Language.cs" />
+    <Compile Include="Entities\Common\CategoryLanguage.cs" />
+    <Compile Include="Entities\C__RefactorLog.cs" />
+    <Compile Include="Entities\Location\City.cs" />
+    <Compile Include="Entities\Location\Country.cs" />
+    <Compile Include="Entities\Location\District.cs" />
+    <Compile Include="Entities\Location\CityLanguage.cs" />
+    <Compile Include="Entities\Location\CountryLanguage.cs" />
+    <Compile Include="Entities\Product\Store.cs" />
+    <Compile Include="Entities\Product\StoreComment.cs" />
+    <Compile Include="Entities\Product\StoreDescription.cs" />
+    <Compile Include="Entities\Product\StoreImage.cs" />
+    <Compile Include="Entities\Tasks\TaskProcess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Users\Subscribed.cs" />
+    <Compile Include="Entities\Users\SuggestingClients.cs" />
+    <Compile Include="Entities\Users\User.cs" />
+    <Compile Include="Enums\EnumMailTemplate.cs" />
+    <Compile Include="Enums\EnumTaskProcessType.cs" />
+    <Compile Include="Enums\EnumStatusTask.cs" />
+    <Compile Include="Enums\LanguageDictionary.cs" />
+    <Compile Include="CommandException.cs" />
+    <Compile Include="Model\BaseSearchItem.cs" />
+    <Compile Include="Model\CategoryItem.cs" />
+    <Compile Include="Model\ContentDetails.cs" />
+    <Compile Include="Model\EmailTemplateItem.cs" />
+    <Compile Include="Model\LocationItem.cs" />
+    <Compile Include="Model\NewsListItems.cs" />
+    <Compile Include="Model\EventListItem.cs" />
+    <Compile Include="Model\SearchStoreItem.cs" />
+    <Compile Include="Model\StoreDetail.cs" />
+    <Compile Include="Model\TaskItem.cs" />
+    <Compile Include="Queries\Common\ILabelsWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Common\ICategoriesWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Common\ITaskProcessQueryReposiroty.cs" />
+    <Compile Include="Queries\Common\ICategoriesQueryReposiroty.cs" />
+    <Compile Include="Queries\Common\ILabelsQueryReposiroty.cs" />
+    <Compile Include="Queries\Events\IEventsWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Languages\ILanguageQueryReposiroty.cs" />
+    <Compile Include="Queries\Locations\ILocationWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Locations\ILocationQueryReposiroty.cs" />
+    <Compile Include="Queries\Mails\IMailTemplateQueryRepository.cs" />
+    <Compile Include="Queries\News\INewsWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Posts\IPostsWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Posts\IPostQueryReposiroty.cs" />
+    <Compile Include="Queries\Search\ISearchWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Stores\IStoreWebQueryReposiroty.cs" />
+    <Compile Include="Queries\Stores\IStoreQueryReposiroty.cs" />
+    <Compile Include="Commands\Users\AddUserCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Users\IUserQueryReposiroty.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

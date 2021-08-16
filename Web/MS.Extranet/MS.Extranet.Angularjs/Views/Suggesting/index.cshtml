@@ -1,0 +1,71 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "ModifyView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+    <link href="~/js/uploadify/uploadify.css" rel="stylesheet" />
+
+}
+
+@section ContentScripts
+{
+    <script src="~/Scripts/jquery.maskedinput.js"></script>
+<script src="~/js/SaveSuggestingController.js"></script>
+}
+
+
+
+<div ng-app="multipleCtrlApp">
+    <h3>@MS.ExtranetResources.Resources.ContactWithUs</h3>
+    <div class="col-lg-12">
+        @Html.Hidden("HdnUserId", ViewData["IdUser"])
+        <div class="my-profile">
+
+
+            <p>
+                Cualquier duda que tengas o información, sugernecia que desees comunicarnos puedes hacerlo desde aquí. Estaremos encantados de poder ayudarte o mejorar.
+            </p>
+
+        </div>
+        <form name="saveSuggestingForm" ng-controller="suggestingController" novalidate>
+            <div class="row" style="padding-top:20px;">
+                <div id="AlertSaveOk" class="alert-box alert-success" style="display:none">
+                    @MS.ExtranetResources.Resources.SaveOk
+                </div>
+                <div id="ReuiqredFiledPanel" class="alert-box alert-error" style="display:none">
+                    *&nbsp;&nbsp;@MS.ExtranetResources.Resources.YouMustCompleteRequiredFields
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="form-group">
+                    <label for="subject" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Subject</label>
+                    <div ng-class="{ 'has-error' : saveSuggestingForm.subject.$invalid }" class="col-sm-9 form-group">
+                        <input class="form-control" id="TxtSubject" name="subject" ng-model="subject" type="text" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text" class="text-right col-sm-3">@MS.ExtranetResources.Resources.TellMeUs</label>
+                    <div ng-class="{ 'has-error' : saveSuggestingForm.text.$invalid }" class="col-sm-9 form-group">
+                        <textarea rows="5" class="form-control" id="TxtText" name="text" ng-model="text" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="text-right col-sm-3"></label>
+                    <div class="col-sm-9 form-group">
+                        <button type="submit" ng-click="submit(saveSuggestingForm.$valid)" class="awe-btn awe-btn-1 awe-btn-medium">@MS.ExtranetResources.Resources.Save</button>
+                    </div>
+                </div>
+
+            </div>
+           
+        </form>
+    </div>
+</div>
+
+
+

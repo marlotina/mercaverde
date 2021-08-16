@@ -1,0 +1,288 @@
+﻿@using System.Web.UI.WebControls
+@using MS.Web.Models
+
+@{
+    ViewBag.Title = "List";
+    ViewBag.LanguageCode = ViewData["LanguageCode"];
+    ViewBag.Domain = HttpContext.Current.Request.Url.Host + "/" + ViewData["LanguageCode"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentScripts
+{
+    <script src="~/assets/plugins/bootstrap/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="~/js/SearchListController.js"></script>
+}
+
+@section ContentStyles
+{
+}
+<!--Banner-->
+<section class="sub-banner">
+    <!--Background-->
+    <div class="bg-parallax bg-1"></div>
+    <!--End Background-->
+    <!-- Logo -->
+    <div class="logo-banner text-center">
+        <a href="" title="">
+            <img src="/Theme/images/logo-banner.png" alt="">
+        </a>
+    </div>
+    <!-- Logo -->
+</section>
+<!--End Banner-->
+<div ng-app="multipleCtrlApp">
+    <!-- Main -->
+    <div class="main" data-ng-controller="listStoresController">
+        <div class="container">
+            <div class="main-cn hotel-page bg-white clearfix">
+                <div class="row">
+
+                    <!-- Hotel Right -->
+                    <div class="col-md-9 col-md-push-3">
+
+                        <!-- Breakcrumb -->
+                        <section class="breakcrumb-sc">
+                            <ul class="breadcrumb arrow">
+                                <li><a href="~/@ViewBag.LanguageCode/Home/"><i class="fa fa-home"></i></a></li>
+                                <li><a href="hotel.html" title="">Hotels</a></li>
+                                <li><a href="#" title="">Lista </a></li>
+                                <li>Netherlands</li>
+                            </ul>
+                        </section>
+                        <!-- End Breakcrumb -->
+                        <!-- Hotel List -->
+                        <section class="hotel-list">
+
+                            <!-- Sort by and View by -->
+                            <div class="sort-view clearfix">
+                                <!-- Sort by -->
+                                <div class="sort-by float-left">
+                                    <label>Sort by: </label>
+                                    <div class="sort-select select float-left">
+                                        <span data-placeholder="Select">Select</span>
+                                        <select name="pricing" ng-model="item" id="selectOrder" ng-change="changeOrder()">
+                                            <option selected value="1">Nombre A-Z</option>
+                                            <option value="2">Nombre Z-A</option>
+                                            <option value="3">Barrios A-Z</option>
+                                            <option value="4">Barrios Z-A</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- End Sort by -->
+                                <!-- View by -->
+                                <div class="view-by float-right">
+                                    <ul>
+                                        <li><a href="#" title="" class="current"><img src="/Theme/images/icon-list.png" alt=""></a></li>
+                                        <li><a id="SearchToOtherViewLink" href="~/@ViewBag.LanguageCode/Search/Map/@ViewData["ParamsQueryString"]" title=""><img src="/Theme/images/icon-map.png" alt=""></a></li>
+                                    </ul>
+                                </div>
+                                <!-- View by -->
+                            </div>
+                            <!-- End Sort by and View by -->
+                            <!-- Hotel Grid Content-->
+                            <div class="hotel-list-cn clearfix">
+
+                                <div ng-show="storeList.ListStores.length == 0" class="ng-hide">
+                                    <div class="hotel-list-item">
+                                        La búsqueda no ha devuelto resultados
+                                    </div>
+                                </div>
+                                <div ng-show="storeList.ListStores.length >= 1" class="ng-hide">
+
+                                    <div class="hotel-list-item" data-ng-repeat="store in storeList.ListStores">
+                                        <figure class="hotel-img float-left">
+                                            <a href="{{ store.Url }}" title="">
+                                                <img src="/Theme/images/hotel/img-2.jpg" alt="">
+                                            </a>
+                                        </figure>
+                                        <div class="hotel-text">
+                                            <div class="hotel-name">
+                                                <a href="{{ store.Url }}" title="">{{ store.Name }}</a>
+                                            </div>
+                                            <div class="hotel-star-address">
+                                                <span class="hotel-star">
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                </span>
+                                                <span class="rating">
+                                                    Good<br>
+                                                    <ins>8.5</ins>
+                                                </span>
+                                                <address class="hotel-address">
+                                                    {{ store.CityName }} - {{ store.DistrictName }}
+                                                </address>
+                                            </div>
+                                            <p>
+                                                My stay at cumberland hotel was amazing, loved the location, was close to all the major attractions allthough there rooms seemed... <a href="" title="">view all 125 reviews</a>
+                                            </p>
+                                           <div class="hotel-service float-right">
+                                                <a href="" title=""><img src="/Theme/images/icon-service-1.png" alt=""></a>
+                                                <a href="" title=""><img src="/Theme/images/icon-service-2.png" alt=""></a>
+                                                <a href="" title=""><img src="/Theme/images/icon-service-3.png" alt=""></a>
+                                                <a href="" title=""><img src="/Theme/images/icon-service-4.png" alt=""></a>
+                                                <a href="" title=""><img src="/Theme/images/icon-service-5.png" alt=""></a>
+                                                <a href="" title=""><img src="/Theme/images/icon-service-6.png" alt=""></a>
+                                                <a href="" title=""><img src="/Theme/images/icon-service-7.png" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hotel-list-item">
+                                        <pagination ng-model="currentPage"
+                                                    total-items="storeList.TotalItems"
+                                                    max-size="maxSize"
+                                                    boundary-links="true"
+                                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                        </pagination>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- End Hotel Item -->
+
+                            </div>
+                            <!-- End Hotel Grid Content-->
+                            <!-- Page Navigation -->
+                            @*<div class="page-navigation-cn">
+                                    <ul class="page-navigation">
+                                    <li class="first"><a href="" title="">First</a></li>
+                                    <li class="current"><a href="" title="">1</a></li>
+                                            <li><a href="" title="">2</a></li>
+                                            <li><a href="" title="">3</a></li>
+                                            <li><a href="" title="">4</a></li>
+                                            <li><a href="" title="">5</a></li>
+                                            <li><a href="" title="">...</a></li>
+                                            <li class="last"><a href="" title="">Last</a></li>
+                                        </ul>
+                                    <pagination ng-model="currentPage"
+                                                total-items="storeList.TotalItems"
+                                                max-size="maxSize"
+                                                boundary-links="true"
+                                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                    </pagination>
+                                </div>*@
+                            <!-- Page Navigation -->
+
+                        </section>
+                        <!-- End Hotel List -->
+
+                    </div>
+                    <!-- End Hotel Right -->
+                    <!-- Sidebar Hotel -->
+                    <div class="col-md-3 col-md-pull-9">
+                        <form class="course-finder-form" method="get" name="sform" id="searchForm">
+                            @Html.Hidden("pIdLanguage", ViewData["IdLanguage"])
+                            @Html.Hidden("pLocationId", ViewData["IdLocation"])
+                            @Html.Hidden("pLocationName", ViewData["LocationName"])
+                            
+                            <input type="hidden" id="pDistrictsList" value="" />
+                            <input type="hidden" id="pCategoriesList" value="" />
+                            <input type="hidden" id="pOrder" value="" />
+
+                            <!-- Sidebar Content -->
+                            <div class="sidebar-cn">
+                                <!-- Search Result -->
+                                <div class="search-result">
+                                    <p>
+                                        We found <br>
+                                        <ins>{{storeList.TotalItems}}</ins> <span>stores.</span>
+                                    </p>
+                                </div>
+                                <!-- End Search Result -->
+                                <!-- Search Form Sidebar -->
+                                <div class="search-sidebar">
+                                    <div class="row">
+                                        <div class="form-search clearfix">
+                                            <div class="form-field col-md-12">
+
+                                                @*<label for="destination"><span>Destination:</span> Netherlands</label>*@
+
+                                                <select class="form-control subject" id="DdlCities">
+                                                    @foreach (var item in (List<ListItem>)ViewData["DdlCityList"])
+                                                    {
+                                                        <option value="@item.Value" @(ViewData["IdLocation"].ToString() == @item.Value ? "selected":"")>@item.Text</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="form-submit col-md-12">
+                                                <button class="awe-btn awe-btn-small awe-btn-1" type="submit" ng-click="getStores(0,10)"><i class="fa fa-search"></i></button>
+                                                <button class="awe-btn awe-btn-small awe-btn-1" type="submit" ng-click="cleanFilters()">Limpiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Search Form Sidebar -->
+                                <!-- Narrow your results
+                                <div class="narrow-results">
+                                    <h6>Narrow your results</h6>
+                                    <div class="narrow-form">
+                                        <input type="text" name="" class="narrow-input" placeholder="Property name contains:">
+                                        <button class="submit-narrow"></button>
+                                    </div>
+                                </div>
+                                End Narrow your results -->
+
+                                   <!-- Area -->
+                                <div id="divCategory" class="widget-sidebar area-sidebar">
+                                    <h4 class="title-sidebar">Category</h4>
+                                    <ul class="widget-ul">
+                                        @foreach (var item in (List<ListCustomItem>)ViewData["CategoryList"])
+                                        {
+                                            <li>
+                                                <div class="radio-checkbox">
+                                                    <input id="category-@item.Value" type="checkbox" class="checkbox" data-filter="category" value="@item.Value" name="category-@item.Value" @(item.Active ? "checked" : "") />
+                                                    <label for="category-@item.Value">@item.Text</label>
+                                                </div>
+                                                @*<span>12</span>*@
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div id="divLabel" class="widget-sidebar area-sidebar">
+                                    <h4 class="title-sidebar">Labels</h4>
+                                    <ul class="widget-ul">
+                                        @foreach (var itemLabel in (List<ListCustomItem>)ViewData["LabelList"])
+                                        {
+                                            <li>
+                                                <div class="radio-checkbox">
+                                                    <input id="label-@itemLabel.Value" type="checkbox" class="checkbox" data-filter="label" value="@itemLabel.Value" name="label-@itemLabel.Value" @(itemLabel.Active ? "checked" : "") />
+                                                    <label for="label-@itemLabel.Value">@itemLabel.Text</label>
+                                                </div>
+                                                @*<span>12</span>*@
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                 <!-- End Area -->
+                                <div id="divDistricts" class="widget-sidebar area-sidebar">
+                                    <h4 class="title-sidebar">Areas</h4>
+                                    <ul class="widget-ul">
+                                        @foreach (var item in (List<ListCustomItem>)ViewData["DistrictList"])
+                                        {
+                                            <li>
+                                                <div class="radio-checkbox">
+                                                    <input id="district-@item.Value" type="checkbox" class="checkbox" data-filter="district" value="@item.Value" name="district-@item.Value" @(item.Active ? "checked" : "") />
+                                                    <label for="district-@item.Value">@item.Text</label>
+
+                                                </div>
+                                                <span>12</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+
+                                </div>
+                            </form>
+                            <!-- End Sidebar Content -->
+                        </div>
+                        <!-- End Sidebar Hotel -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->

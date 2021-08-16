@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39FF20D1-1465-4640-B92E-33F68C3ADD61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MS.CommandQuery.Infrastructure</RootNamespace>
+    <AssemblyName>MS.CommandQuery.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\Web\MS.Extranet\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\Web\MS.Extranet\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="StructureMap, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web\MS.Extranet\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandHandlers\Common\SaveSuggestingCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Common\SaveStoreCategoriesCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Common\SaveStoreLabelsCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Posts\DeletePostCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Posts\SavePostCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Stores\PublishStoreCommandHandler - Copy.cs" />
+    <Compile Include="CommandHandlers\Stores\DeleteStoreCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Stores\SaveStoreDescriptionCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Stores\DeleteStoreImagesCommandHandler .cs" />
+    <Compile Include="CommandHandlers\Stores\SaveStoreImagesOrderCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Stores\SaveStoreImagesCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Stores\SaveStoreCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Tasks\UpdateTaskProcessCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Users\ModifyUserCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Users\RecoverPasswordCommandHandler.cs" />
+    <Compile Include="DbContexts\IMsContext.cs" />
+    <Compile Include="CommandHandlers\CommandDispatcher.cs" />
+    <Compile Include="CommandHandlers\CommandExecutor.cs" />
+    <Compile Include="CommandHandlers\Users\AddUserCommandHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryRepositories\Common\LabelsWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Common\CategoriesWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Common\TaskProcessQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Common\CategoriesQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Common\LabelsQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Events\EventsWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Languages\LanguageQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Locations\LocationWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Locations\LocationQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Mails\MailTemplateQueryRepository.cs" />
+    <Compile Include="QueryRepositories\News\NewsWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Posts\PostsWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Posts\PostQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Search\SearchWebQueryReposiroty .cs" />
+    <Compile Include="QueryRepositories\Stores\StoreWebQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\Stores\StoreQueryReposiroty .cs" />
+    <Compile Include="QueryRepositories\Users\UserQueryReposiroty.cs" />
+    <Compile Include="QueryRepositories\QueryBase.cs" />
+    <Compile Include="DbContexts\MsContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utils\MS.Utils\MS.Utils.csproj">
+      <Project>{8D3A14A6-AB68-4030-846E-9476BD804EC4}</Project>
+      <Name>MS.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MS.CommandQuery.Core\MS.CommandQuery.Core.csproj">
+      <Project>{7d7ee705-427a-48e9-9465-5baea5e5d65e}</Project>
+      <Name>MS.CommandQuery.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

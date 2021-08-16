@@ -1,0 +1,253 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "ModifyView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+    <link href="~/js/uploadify/uploadify.css" rel="stylesheet" />
+
+}
+
+@section ContentScripts
+{
+    <script src="~/Scripts/jquery.maskedinput.js"></script>
+    <script src="~/js/SaveUserController.js"></script>
+}
+
+
+
+<div ng-app="multipleCtrlApp">
+    
+    <div class="col-md-9">
+
+        @Html.Hidden("HdnUserId", ViewData["IdUser"])
+        <div data-ng-controller="userController">
+            <div class="tab-content">
+                <div class="row" style="padding-top:20px;">
+                    <div id="AlertSaveOk" class="alert-box alert-success" style="display:none">
+                        @MS.ExtranetResources.Resources.SaveOk
+                    </div>
+                    <div id="ReuiqredFiledPanel" class="alert-box alert-error" style="display:none">
+                        *&nbsp;&nbsp;@MS.ExtranetResources.Resources.YouMustCompleteRequiredFields
+                    </div>
+                </div>
+                <div class="tab-pane fade in active" id="profile-pills">
+                    <h3>@MS.ExtranetResources.Resources.GeneralData</h3>
+                    
+                    <form name="saveUserForm" class="form-horizontal" data-ng="user" novalidate>
+                        <div class="row">
+                            <label for="username" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Name&nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveUserForm.username.$invalid }">
+                                <input class="form-control" name="username" type="text" data-ng-model="user.Name" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="surname" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Surname &nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveUserForm.surname.$invalid }">
+                                <input class="form-control" name="surname" type="text" data-ng-model="user.Surname" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="cityname" class="text-right col-sm-3">@MS.ExtranetResources.Resources.City &nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveUserForm.cityname.$invalid }">
+                                <input class="form-control" name="cityname" type="text" data-ng-model="user.CityName" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="text-right col-sm-3">@MS.ExtranetResources.Resources.Country &nbsp;*</label>
+                            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : saveUserForm.country.$invalid }">
+                                <select name="country" id="DdlCountry" class="form-control" ng-model="user.CountryId" required>
+                                    @foreach (var item in (List<ListItem>)ViewData["DdlCountryList"])
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="text-right col-sm-3">@MS.ExtranetResources.Resources.Language &nbsp;*</label>
+                            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : saveUserForm.language.$invalid }">
+                                <select name="language" id="DdlLanguage" class="form-control" ng-model="user.LanguageId" required>
+                                    @foreach (var item in (List<ListItem>)ViewData["DdlLanguageList"])
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="postalCodeName" class="text-right col-sm-3">@MS.ExtranetResources.Resources.PostalCode &nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveUserForm.postalCodeName.$invalid }">
+                                <input class="form-control" type="text" data-ng-model="user.PostalCode" name="postalCodeName" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="webBlog" class="text-right col-sm-3">@MS.ExtranetResources.Resources.WebUrl</label>
+                            <div class="col-sm-9 form-group">
+                                <input class="form-control" type="text" data-ng-model="user.UrlWebSite" name="webBlog" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="text-right col-sm-3">
+                                @MS.ExtranetResources.Resources.BirthDate
+                            </label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveUserForm.birthdate.$invalid }">
+                                <div class="form-inline">
+                                    @Html.DropDownList("DdlDayList", ViewData["DdlDayList"] as SelectList, new { @class = "form-control", ng_model = "user.BirthDay", name = "BirthDay" })
+                                    @Html.DropDownList("DdlMonthList", ViewData["DdlMonthList"] as SelectList, new { @class = "form-control", ng_model = "user.BirthMonth", name = "BirthMonth" })
+                                    @Html.DropDownList("DdlyYearList", ViewData["DdlyYearList"] as SelectList, new { @class = "form-control", ng_model = "user.BirthYear", name = "BirthYear" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="description" class="text-right col-sm-3">
+                                @MS.ExtranetResources.Resources.DescriptionAboutYou
+                            </label>
+                            <div class="col-sm-9 form-group">
+                                <textarea rows="5" class="form-control" data-ng-model="user.Description" name="description"></textarea>
+                                <div class="text-muted">
+                                    @MS.ExtranetResources.Resources.DescriptionAboutYouText 
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <button type="submit" data-ng-click="post(saveUserForm.$valid)" class="awe-btn awe-btn-1 awe-btn-medium">@MS.ExtranetResources.Resources.Save</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="photo-pills">
+                    <h3>@MS.ExtranetResources.Resources.SelectProfilePhoto</h3>
+                    <div class="form-horizontal">
+                        <script src="~/js/uploadify/jquery.uploadify.js"></script>
+                        @*<script src="/mvc3/uploadify/swfobject.js" type="text/javascript"></script>*@
+                        <script src="~/js/jquery.ui.js"></script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                var urlService = '/api/User/UploadImages?userId=' + $("#HdnUserId").val();
+                                $("#profileImageUpload").uploadify({
+                                    'swf': '@Url.Content("~/js/uploadify/uploadify.swf")',
+                                    'uploader': urlService,
+                                    'buttonText': '@MS.ExtranetResources.Resources.BrowseImages',
+                                    'folder': 'uploads',
+                                    'fileDesc': 'Image Files',
+                                    'fileExt': '*.jpg;*.jpeg;*.gif;*.png',
+                                    'multi': false,
+                                    'auto': true,
+                                    'onUploadSuccess': function (file, data) {
+                                        var d = new Date();
+                                        var url = data;
+                                        while (url.indexOf("\"") != -1) {
+                                            url = url.replace("\"", "");
+                                        }
+
+                                        $("#imgUser").attr("src", url + "?" + d.getTime());
+                                        $("#ImgUserProfile").attr("src", url + "?" + d.getTime());
+                                    }
+                                });
+                            });
+
+                            $(function () {
+                                $("#sortable").sortable();
+                                $("#sortable").disableSelection();
+                            });
+                        </script>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-3">
+                                <img id="imgUser" ng-src="{{user.Photo}}" alt="imagen perfil" />
+                                <span class="glyphicon glyphicon-trash" data="{{user.IdUser}}" ng-click="deleteImage(user.IdUser)"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="btn-group">
+                                    <input type="file" name="profileImageUpload" id="profileImageUpload" class="btn btn-default loginBtn" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="log-pills">
+                    <h3>@MS.ExtranetResources.Resources.ChangeRegistrationData</h3>
+                    <form name="changePassword" class="form-horizontal" novalidate>
+                        <div class="row">
+                            <label for="email" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Email:</label>
+                            <div class="col-sm-9 form-group">
+                                <input class="form-control" id="txtEmail" type="text" value="{{ user.Email }}" name="email" disabled>
+                            </div>
+                        </div>
+                        <div id="ReuiqredFiledPasswordNotValidMsg" class="row" style="display:none">
+                            <label class="text-right col-sm-3 text-danger"></label>
+                            <div class="col-sm-9 form-group">
+                                <label class="text-danger">*&nbsp;&nbsp;@MS.ExtranetResources.Resources.PasswordNotValid</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="actualPassword" class="text-right col-sm-3">@MS.ExtranetResources.Resources.EnterYourCurrentPassword &nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : changePassword.actualPassword.$invalid }">
+                                <input class="form-control" id="actualPassword" name="actualPassword" type="password" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="pw1" class="text-right col-sm-3"></label>
+                            <div class="form-group has-feedback">
+                                <label id="SaveNewPassOk" style="display:none" class="control-label text-success" for="pw2">@MS.ExtranetResources.Resources.NewPasswordSaved</label>
+                                <label class="control-label text-danger has-error" for="pw2" ng-show="changePassword.pw2.$error.pwmatch">*&nbsp;@MS.ExtranetResources.Resources.PasswordsDontMatch</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="pw1" class="text-right col-sm-3">@MS.ExtranetResources.Resources.NewPassword &nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : changePassword.pw1.$invalid }">
+                                <input type="password" id="pw1" name="pw1" ng-model="pw1" required class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="pw2" class="text-right col-sm-3">@MS.ExtranetResources.Resources.RepeatNewPasword &nbsp;*</label>
+                            <div class="col-sm-9 form-group" ng-class="{ 'has-error' : changePassword.pw2.$invalid }">
+                                <input type="password" id="pw2" name="pw2" ng-model="pw2" required pw-check="pw1" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label>@MS.ExtranetResources.Resources.Conditions</label>
+                            <div class="panel panel-default">
+                                <div class="panel-body conditions">
+                                    <p>@MS.ExtranetResources.Resources.AcceptConditionsText</p>
+                                </div>
+                            </div>
+                            <input type="checkbox" ng-model="user.AcceptedConditions">&nbsp;@MS.ExtranetResources.Resources.AcceptConditions
+                        </div>
+                        <br />
+                        <div class="row">
+                            <button type="submit" data-ng-click="ressetPassword(changePassword.$valid)" class="awe-btn awe-btn-1 awe-btn-medium">@MS.ExtranetResources.Resources.Save</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        
+        
+        <div class="widget widget_categories">
+            <h2 class="title-sidebar">@MS.ExtranetResources.Resources.Menu</h2>
+            <ul class="nav-pills nav-stacked">
+                <li class="active">
+                    <a href="#profile-pills" data-toggle="tab">@MS.ExtranetResources.Resources.GeneralData</a>
+                </li>
+                <li>
+                    <a href="#photo-pills" data-toggle="tab">@MS.ExtranetResources.Resources.Photo</a>
+                </li>
+                <li>
+                    <a href="#log-pills" data-toggle="tab">@MS.ExtranetResources.Resources.ChangeRegistrationData</a>
+                </li>
+            </ul>
+        </div>
+        
+
+      
+    </div>
+</div>

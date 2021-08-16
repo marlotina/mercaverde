@@ -1,0 +1,217 @@
+﻿@model MS.Extranet.Angularjs.Models.Logins.Login
+@{
+    var routeValues = this.ViewContext.RouteData.Values;
+    var culture = routeValues["culture"] as string;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Profile</title>
+    <!-- Font Google -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700%7COpen+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!-- End Font Google -->
+    <!-- Library CSS -->
+    <link rel="stylesheet" href="~/Theme/css/library/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/Theme/css/library/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/Theme/css/library/owl.carousel.css">
+    <link rel="stylesheet" href="~/Theme/css/library/jquery.mb.YTPlayer.min.css">
+
+    <script type="text/javascript" src="~/Theme/js/library/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="~/Theme/css/library/bootstrap.min.css">
+    <!-- End Library CSS -->
+    <link rel="stylesheet" href="~/Theme/css/style.css">
+</head>
+    <body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <div class="tb-cell">
+                <div id="page-loading">
+                    <div></div>
+                    <p>Loading</p>
+                </div>
+            </div>
+        </div>
+        <!-- Wrap -->
+        <div id="wrap">
+            <!-- Header -->
+            <header id="header" class="header">
+                <div class="container">
+                    <!-- Logo -->
+                    <div class="logo float-left">
+                        <a href="index.html" title=""><img src="/Theme/images/logo-header.png" alt=""></a>
+                    </div>
+                    <!-- End Logo -->
+                    <!-- Bars -->
+                    <div class="bars" id="bars"></div>
+                    <!-- End Bars -->
+                </div>
+            </header>
+            <!-- End Header -->
+            <!--Banner-->
+            <section class="sub-banner">
+                <!--Background-->
+                <div class="bg-parallax bg-1"></div>
+                <!--End Background-->
+                <!-- Logo -->
+                <div class="logo-banner text-center">
+                    <a href="" title="">
+                        <img src="/Theme/images/logo-banner.png" alt="">
+                    </a>
+                </div>
+                <!-- Logo -->
+            </section>
+            <!--End Banner-->
+            <!-- Main -->
+            <div class="main">
+                <div class="container">
+                    <div class="main-cn element-page bg-white clearfix col-md-5 col-md-offset-3">
+                        <!--Breakcrumb-->
+                        <section class="breakcrumb-sc">
+                            <ul class="breadcrumb arrow">
+                                <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li>@MS.ExtranetResources.Resources.Login</li>
+                            </ul>
+                            @*<div class="support float-right">
+                                <small>Got a question?</small> 123-123-1234
+                            </div>*@
+                        </section>
+                        <!--End Breakcrumb-->
+
+                        <section class="user-profile">
+                            <div class="user-form">
+
+                              
+                                @using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                {
+
+                                    <h2 class="user-profile__title">@MS.ExtranetResources.Resources.Login</h2>
+                                    <p>@MS.ExtranetResources.Resources.LoginText</p>
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <div class="field-input">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.Email })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="field-input">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.Password })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="field-input">
+                                        <div class="check-box">
+
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            <label for="RememberMe">@MS.ExtranetResources.Resources.RememberMe</label>
+
+                                        </div>
+                                    </div>
+                                    <div class="field-input" style="padding-bottom:10px;">
+                                        <input type="submit" value="@MS.ExtranetResources.Resources.Login" class="awe-btn awe-btn-1 awe-btn-medium" />
+                                    </div>
+                                }
+
+
+                             
+                                    
+                                <div class="field-input">
+                                    <a href="/@culture/Login/Register" class="awe-btn awe-btn-3 awe-btn-small">@MS.ExtranetResources.Resources.Register</a>
+                                    <a href="/@culture/Login/RecoverPassword" class="awe-btn awe-btn-3 awe-btn-small" style="float:right">@MS.ExtranetResources.Resources.RecoverPassword</a>
+                                </div>
+
+
+
+                              
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- End Main -->
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-md-4">
+                            <div class="logo-foter">
+                                <a href="index.html" title=""><img src="~/Theme/images/logo-footer.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Navigation Footer -->
+                        <div class="col-xs-6 col-sm-3 col-md-2">
+                            <div class="ul-ft">
+                                <ul>
+                                    <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.LegalInformation</a></li>
+                                    <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.PrivateInformation</a></li>
+                                    <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.CookieInformation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Navigation Footer -->
+                        <!-- Navigation Footer -->
+                        <div class="col-xs-6 col-sm-3 col-md-2">
+                            <div class="ul-ft">
+                                <ul>
+                                    <li><a href="/Home/About">@MS.ExtranetResources.Resources.WhoInformation</a></li>
+                                    <li><a href="/Home/Owner">@MS.ExtranetResources.Resources.HaveStore</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Navigation Footer -->
+                        <!-- Footer Currency, Language -->
+                        <div class="col-sm-6 col-md-4">
+                            <!-- Language -->
+                            <div class="currency-lang-bottom dropdown-cn float-left">
+                                <div class="dropdown-head">
+                                    <span class="angle-down"><i class="fa fa-angle-down"></i></span>
+                                </div>
+                                <div class="dropdown-body">
+                                    <ul>
+                                        <li class="current"><a href="~/en/login/login" title="">English</a></li>
+                                        <li><a href="~/es/login/login" title="">Español</a></li>
+                                        <li><a href="~/ca/login/login" title="">Català</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Language -->
+
+                            <!--CopyRight-->
+                            <p class="copyright">
+                                @MS.ExtranetResources.Resources.CopyRight
+                            </p>
+                            <!--CopyRight-->
+                        </div>
+                        <!-- End Footer Currency, Language -->
+                    </div>
+                </div>
+            </footer>
+            <!-- End Footer -->
+        </div>
+
+        <!-- Library JS -->
+        @*<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>*@
+        <script type="text/javascript" src="~/Theme/js/library/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/bootstrap.min.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/parallax.min.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/jquery.nicescroll.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/jquery.mb.YTPlayer.min.js"></script>
+        <script type="text/javascript" src="~/Theme/js/library/SmoothScroll.js"></script>
+        <script src="~/Scripts/angular.min.js"></script>
+        <!-- End Library JS -->
+        <!-- Main Js -->
+        <!-- End Main Js -->
+        <script type="text/javascript" src="~/Theme/js/script.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
+

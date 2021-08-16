@@ -1,0 +1,221 @@
+﻿@model MS.Extranet.Angularjs.Models.Logins.Register
+@{
+    var routeValues = this.ViewContext.RouteData.Values;
+    var culture = routeValues["culture"] as string;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Profile</title>
+    <!-- Font Google -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700%7COpen+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!-- End Font Google -->
+    <!-- Library CSS -->
+    <link rel="stylesheet" href="~/Theme/css/library/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/Theme/css/library/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/Theme/css/library/owl.carousel.css">
+    <link rel="stylesheet" href="~/Theme/css/library/jquery.mb.YTPlayer.min.css">
+
+    <script type="text/javascript" src="~/Theme/js/library/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="~/Theme/css/library/bootstrap.min.css">
+    <!-- End Library CSS -->
+    <link rel="stylesheet" href="~/Theme/css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="tb-cell">
+            <div id="page-loading">
+                <div></div>
+                <p>@MS.ExtranetResources.Resources.Loading</p>
+            </div>
+        </div>
+    </div>
+    <!-- Wrap -->
+    <div id="wrap">
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="container">
+                <!-- Logo -->
+                <div class="logo float-left">
+                    <a href="index.html" title=""><img src="/Theme/images/logo-header.png" alt=""></a>
+                </div>
+                <!-- End Logo -->
+                <!-- Bars -->
+                <div class="bars" id="bars"></div>
+                <!-- End Bars -->
+            </div>
+        </header>
+        <!-- End Header -->
+        <!--Banner-->
+        <section class="sub-banner">
+            <!--Background-->
+            <div class="bg-parallax bg-1"></div>
+            <!--End Background-->
+            <!-- Logo -->
+            <div class="logo-banner text-center">
+                <a href="" title="">
+                    <img src="/Theme/images/logo-banner.png" alt="">
+                </a>
+            </div>
+            <!-- Logo -->
+        </section>
+        <!--End Banner-->
+        <!-- Main -->
+        <div class="main">
+            <div class="container">
+                <div class="main-cn element-page bg-white clearfix">
+                    <!--Breakcrumb-->
+                    <section class="breakcrumb-sc">
+                        <ul class="breadcrumb arrow">
+                            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                            <li>@MS.ExtranetResources.Resources.Register</li>
+                        </ul>
+                    </section>
+                    <!--End Breakcrumb-->
+
+                    <div class="user-form user-signup">
+                        @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { role = "form" }))
+                        {
+                           
+                            <div class="col-md-5">
+                                <h2 class="user-profile__title">@MS.ExtranetResources.Resources.Register</h2>
+                                <p>@MS.ExtranetResources.Resources.RegisterText </p>
+                                <div class="field-input">
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    @if (TempData["Success"] != null)
+                                    {
+                                        <p class="alert-box alert-success">@TempData["Success"].ToString()</p>
+                                    }
+                                </div>
+                                <div class="field-input">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.Name })
+                                </div>
+                                <div class="field-input">
+                                    @Html.TextBoxFor(m => m.Surname, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.Surname })
+                                </div>
+                                <div class="field-input">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.Email })
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-md-offset-2">
+                                <div class="field-input" style="padding-top: 50px;">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.Password })
+                                </div>
+                                <div class="field-input">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-text", @placeholder = @MS.ExtranetResources.Resources.RepeatNewPasword })
+                                </div>
+                                <label>@MS.ExtranetResources.Resources.TermsOfUse</label>
+                                <div class="input-text conditions">
+                                    @MS.ExtranetResources.Resources.AcceptConditionsText
+                                </div>
+                                
+                                <div class="field-input">
+                                    <div class="check-box">
+                                        @Html.CheckBoxFor(m => m.AcceptedConditions)
+                                        <label for="AcceptedConditions">@MS.ExtranetResources.Resources.AcceptConditions</label>
+                                 
+                                    </div>
+                                </div>
+                                <div class="form-group" style="float: right;">
+                                    <input type="submit" class="awe-btn awe-btn-1 awe-btn-medium" value="@MS.ExtranetResources.Resources.Register" />
+                                </div>
+
+                            </div>
+                           
+                        }
+                        
+
+                        <div class="input-text" style="padding-bottom:10px;padding-left: 15px;">
+                            <a href="/@culture/Login/Login" class="awe-btn awe-btn-5 arrow-left awe-btn-small">@MS.ExtranetResources.Resources.ReturnLogin</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main -->
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-md-4">
+                        <div class="logo-foter">
+                            <a href="index.html" title=""><img src="~/Theme/images/logo-footer.png" alt=""></a>
+                        </div>
+                    </div>
+                    <!-- End Logo -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <div class="ul-ft">
+                            <ul>
+                                <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.LegalInformation</a></li>
+                                <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.PrivateInformation</a></li>
+                                <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.CookieInformation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <div class="ul-ft">
+                            <ul>
+                                <li><a href="/Home/About">@MS.ExtranetResources.Resources.WhoInformation</a></li>
+                                <li><a href="/Home/Owner">@MS.ExtranetResources.Resources.HaveStore</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Footer Currency, Language -->
+                    <div class="col-sm-6 col-md-4">
+                        <!-- Language -->
+                        <div class="currency-lang-bottom dropdown-cn float-left">
+                            <div class="dropdown-head">
+                                <span class="angle-down"><i class="fa fa-angle-down"></i></span>
+                            </div>
+                            <div class="dropdown-body">
+                                <ul>
+                                    <li class="current"><a href="~/en/login/login" title="">English</a></li>
+                                    <li><a href="~/es/login/login" title="">Español</a></li>
+                                    <li><a href="~/ca/login/login" title="">Català</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Language -->
+                        <!--CopyRight-->
+                        <p class="copyright">
+                            @MS.ExtranetResources.Resources.CopyRight
+                        </p>
+                        <!--CopyRight-->
+                    </div>
+                    <!-- End Footer Currency, Language -->
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </div>
+
+    <!-- Library JS -->
+    @*<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>*@
+    <script type="text/javascript" src="~/Theme/js/library/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/parallax.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/jquery.mb.YTPlayer.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/SmoothScroll.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <!-- End Library JS -->
+    <!-- Main Js -->
+    <!-- End Main Js -->
+    <script type="text/javascript" src="~/Theme/js/script.js"></script>
+</body>
+</html>
+

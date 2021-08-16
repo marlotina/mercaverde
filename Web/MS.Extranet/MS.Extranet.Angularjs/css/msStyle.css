@@ -1,0 +1,193 @@
+#mapa { 
+	width: auto;
+	height: 400px;
+	margin-bottom: 20px;
+}
+
+/* =============== Estilos del autocomplete =============== */
+.ui-autocomplete { 
+	background: #fff; 
+	border-top: 1px solid #ccc;
+	cursor: pointer; 
+	font: 15px 'Open Sans',Arial;
+	margin-left: 3px;
+	width: 493px !important;
+	position: fixed;
+}
+
+.ui-autocomplete .ui-menu-item { 
+	list-style: none outside none;
+	padding: 7px 0 9px 10px;
+}
+
+.ui-autocomplete .ui-menu-item:hover { background: #eee }
+
+.ui-autocomplete .ui-corner-all { 
+	color: #666 !important;
+	display: block;
+}
+
+/* =============== Estilos generales =============== */
+.login-panel {
+    margin-top: 25%;
+}
+
+/*Footer*/
+#push, #footer {
+    margin-bottom: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #96ba28;
+}
+
+.container .credit {
+    margin: 20px 0;
+}
+.muted {
+    color: #999999;
+}
+
+/*Home*/
+.marketing .col-lg-4 {
+    text-align: center;
+}
+
+/*Map SaveStore*/
+#map-canvas {
+    width: auto;
+	height: 400px;
+	margin-bottom: 20px;
+}
+
+#txtStreet {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 0 11px 0 13px;
+}
+
+#txtStreet:focus {
+    border-color: #4d90fe;
+}
+
+.pac-container {
+    font-family: Roboto;
+}
+
+
+.contenedor {
+    min-height: 750px;
+    margin-bottom: 20px; 
+}
+
+.conditions {
+	height: 100px;
+	overflow-y: scroll;
+}
+
+.titleMS {
+    color: #0B5C39;
+}
+
+
+/*Subir imagenes editor posts*/
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+/* file input bootstrap */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+/*LOGIN*/
+
+.loginBtn {
+    background-color: #59c45a;
+    border-color: #59c45a;
+    color: #fff;
+}
+.loginBtn.btn:hover {
+    color: #fff;
+    background-color: #59c45a;
+}
+
+.loginBtn.btn:focus {
+    color: #fff;
+    background-color: #59c45a;
+}
+
+.loginBtn.btn.focus {
+    color: #fff;
+    background-color: #59c45a;
+}
+.loginLink {
+    color: #0B5C39;
+}
+
+/*barra principal*/
+.navbar .nav,
+.navbar .nav > li {
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  *zoom:1; /* hasLayout ie7 trigger */
+  vertical-align: top;
+}
+
+.navbar-inner {
+  text-align:center;
+}

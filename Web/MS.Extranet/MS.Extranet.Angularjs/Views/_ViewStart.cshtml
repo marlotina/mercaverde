@@ -1,0 +1,7 @@
+﻿@using System.Web
+@{
+    if (!HttpContext.Current.Request.Url.AbsolutePath.Contains("Login/") && !HttpContext.Current.Request.Url.AbsolutePath.Contains("login/"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}

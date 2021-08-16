@@ -1,0 +1,66 @@
+﻿@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+}
+
+@section ContentScripts
+{
+    <script src="~/js/StoreListController.js"></script>
+}
+
+
+@{
+    var routeValues = this.ViewContext.RouteData.Values;
+    var culture = routeValues["culture"] as string;
+}
+
+<div class="col-lg-12">
+        @Html.Hidden("HdnUserId", ViewData["IdUser"])
+    <h3>Store list</h3>
+        @if (bool.Parse(ViewData["HasStores"].ToString()))
+        {
+            <div data-ng-app data-ng-controller="storeListController">
+                
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><a href="" ng-click="predicate = 'Name'; reverse=!reverse">@MS.ExtranetResources.Resources.Name</a></th>
+                            <th><a href="" ng-click="predicate = 'Email'; reverse=!reverse">@MS.ExtranetResources.Resources.Email</a></th>
+                            <th><a href="" ng-click="predicate = 'Phone'; reverse=!reverse">@MS.ExtranetResources.Resources.LastActivity</a></th>
+                            <th><a href="" ng-click="predicate = 'IsPublished'; reverse=!reverse">@MS.ExtranetResources.Resources.Publish</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr data-ng-repeat="store in stores | orderBy:predicate:reverse">
+                        <td>{{ store.Name }}</td>
+                        <td>{{ store.Email }}</td>
+                        <td>{{ store.LastActivity }}</td>
+                        <td>
+                            <span aria-hidden="true" class="glyphicon glyphicon-ok" ng-show="store.IsPublished"></span>
+                            <span aria-hidden="true" class="glyphicon glyphicon-remove" ng-show="!store.IsPublished"></span>
+                        </td>
+                        <td>
+                            <p>
+                                <a href="/@culture/stores/savestore?StoreId={{ store.IdStore }}">@MS.ExtranetResources.Resources.Edit</a>
+                                <a data-ng-click="deleteStore(store.IdStore)" ng-show="!store.IsPublished">@MS.ExtranetResources.Resources.Delete</a>
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+                
+
+                
+            </div>
+        }
+        else
+        {
+            <div class="jumbotron">
+                <h1>@MS.ExtranetResources.Resources.Wellcome</h1>
+                <p>@MS.ExtranetResources.Resources.AddFirstStore</p>
+                <p><a class="btn btn-primary btn-lg" href="/@culture/stores/savestore" role="button">@MS.ExtranetResources.Resources.AddStore</a></p>
+            </div>
+        }
+</div>
+

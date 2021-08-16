@@ -1,0 +1,65 @@
+﻿@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+}
+
+@section ContentScripts
+{
+    <script src="~/js/PostListController.js"></script> 
+}
+<div class="content container">
+    <div class="row">
+        <div class="col-lg-12">
+            @Html.Hidden("HdnUserId", ViewData["IdUser"])
+
+            @if (bool.Parse(ViewData["HasPosts"].ToString()))
+            {
+                <div data-ng-app data-ng-controller="postListController">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th><a href="" ng-click="predicate = 'IdPost'; reverse=!reverse">Id</a></th>
+                                <th><a href="" ng-click="predicate = 'Title'; reverse=!reverse">@MS.ExtranetResources.Resources.Title</a></th>
+                                <th><a href="" ng-click="predicate = 'LastActivity'; reverse=!reverse">@MS.ExtranetResources.Resources.LastActivity</a></th>
+                                <th><a href="" ng-click="predicate = 'IsPublished'; reverse=!reverse">@MS.ExtranetResources.Resources.IsPublished</a></th>
+                                <th><a href="" ng-click="predicate = 'HasRevised'; reverse=!reverse">@MS.ExtranetResources.Resources.Revised</a></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="post in posts | orderBy:predicate:reverse">
+                                <td>{{ post.IdPost }}</td>
+                                <td>{{ post.Title }}</td>
+                                <td>{{ post.LastActivity }}</td>
+                                <td>
+                                    <span aria-hidden="true" class="glyphicon glyphicon-ok" ng-show="post.IsPublished"></span>
+                                    <span aria-hidden="true" class="glyphicon glyphicon-remove" ng-show="!post.IsPublished"></span>
+                                </td>
+                                <td>
+                                    <span aria-hidden="true" class="glyphicon glyphicon-ok" ng-show="post.HasRevised"></span>
+                                    <span aria-hidden="true" class="glyphicon glyphicon-remove" ng-show="!post.HasRevised"></span>
+                                </td>
+                                <td>
+                                    <p>
+                                        <a href="/posts/savepost?PostId={{ post.IdPost }}">@MS.ExtranetResources.Resources.Edit</a>
+                                        <a data-ng-click="deletePost(post.IdPost)" ng-show="!post.IsPublished">@MS.ExtranetResources.Resources.Delete</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="jumbotron">
+                    <h1>Bienvenido!</h1>
+                    <p>@MS.ExtranetResources.Resources.WriteFirstPost</p>
+                    <p><a class="btn btn-primary btn-lg" href="/posts/savePost" role="button">@MS.ExtranetResources.Resources.WritePost</a></p>
+                </div>
+            }
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

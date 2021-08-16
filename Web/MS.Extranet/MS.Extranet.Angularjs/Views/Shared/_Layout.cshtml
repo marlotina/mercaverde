@@ -1,0 +1,191 @@
+﻿@model MS.Extranet.Angularjs.Models.Logins.Login
+@{
+    var routeValues = this.ViewContext.RouteData.Values;
+    var culture = routeValues["culture"] as string;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Profile</title>
+    <!-- Font Google -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700%7COpen+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!-- End Font Google -->
+    <!-- Library CSS -->
+    <link rel="stylesheet" href="~/Theme/css/library/font-awesome.min.css">
+   
+    <link rel="stylesheet" href="~/Theme/css/library/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/Theme/css/library/owl.carousel.css">
+    <link rel="stylesheet" href="~/Theme/css/library/jquery.mb.YTPlayer.min.css">
+    
+    <script type="text/javascript" src="~/Theme/js/library/jquery-1.11.0.min.js"></script>
+    @RenderSection("ContentStyles", required: false)
+    <link rel="stylesheet" href="~/Theme/css/library/bootstrap.min.css">
+    <!-- End Library CSS -->
+    <link rel="stylesheet" href="~/Theme/css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="tb-cell">
+            <div id="page-loading">
+                <div></div>
+                <p>@MS.ExtranetResources.Resources.Loading</p>
+            </div>
+        </div>
+    </div>
+    <!-- Wrap -->
+    <div id="wrap">
+        <!--Banner-->
+        <section class="sub-banner">
+            <!--Background-->
+            <div class="bg-parallax bg-1"></div>
+            <!--End Background-->
+            <!-- Logo -->
+            <div class="logo-banner text-center">
+                <a href="" title="">
+                    <img src="~/Theme/images/logo-banner.png" alt="">
+                </a>
+            </div>
+            <!-- Logo -->
+        </section>
+        <!--End Banner-->
+        <!-- Main -->
+        <div class="main">
+            <div class="container">
+                <div class="main-cn element-page bg-white clearfix">
+                    <!--Breakcrumb-->
+                    <section class="breakcrumb-sc">
+                        <ul class="breadcrumb arrow">
+                            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                            <li>@MS.ExtranetResources.Resources.MyProfile/li>
+                        </ul>
+                    </section>
+                    <!--End Breakcrumb-->
+
+                    <section class="user-profile">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="user-profile__header">
+                                    <h4>@ViewData["NameUser"]</h4>
+                                    <span>@MS.ExtranetResources.Resources.MemberSince May 2012</span>
+                                    <p>
+                                        <img src="@ViewData["ImageProfile"]" alt="">
+                                    </p>
+                                </div>
+                                <ul class="user-profile__navigation">
+                                    <li id="modifyuser" class="current"><a href="/@culture/account/modifyuser/@ViewData["IdUser"]"><img src="~/Theme/images/icon/icon-user.png" alt="">@MS.ExtranetResources.Resources.MyProfile</a></li>
+                                    <li id="listStores"><a href="/@culture/stores/listStores/"><img src="~/Theme/images/icon/icon-setting.png" alt="">@MS.ExtranetResources.Resources.StoreList</a></li>
+                                    <li id="savestore"><a href="/@culture/stores/savestore"><img src="~/Theme/images/icon/icon-cart.png" alt="">@MS.ExtranetResources.Resources.AddStore</a></li>
+                                    <li id="Suggesting"><a href="/@culture/Suggesting"><img src="~/Theme/images/icon/icon-review.png" alt="">@MS.ExtranetResources.Resources.ContactWithUs</a></li>
+                                    @*<li><a href="#"><img src="~/Theme/images/icon/icon-heart.png" alt="">Wishlist</a></li>*@
+                                    <li><a href="/@culture/login/login?LogOut=1"><img src="~/Theme/images/icon/icon-back.png" alt="">@MS.ExtranetResources.Resources.LogOut</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- End Main -->
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-md-4">
+                        <div class="logo-foter">
+                            <a href="index.html" title=""><img src="~/Theme/images/logo-footer.png" alt=""></a>
+                        </div>
+                    </div>
+                    <!-- End Logo -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <div class="ul-ft">
+                            <ul>
+                                <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.LegalInformation</a></li>
+                                <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.PrivateInformation</a></li>
+                                <li><a href="/Home/Legal">@MS.ExtranetResources.Resources.CookieInformation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <div class="ul-ft">
+                            <ul>
+                                <li><a href="/Home/About">@MS.ExtranetResources.Resources.WhoInformation</a></li>
+                                <li><a href="/Home/Owner">@MS.ExtranetResources.Resources.HaveStore</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Footer Currency, Language -->
+                    <div class="col-sm-6 col-md-4">
+                        <!-- Language -->
+                        <div class="currency-lang-bottom dropdown-cn float-left">
+                            <div class="dropdown-head">
+                                <span class="angle-down"><i class="fa fa-angle-down"></i></span>
+                            </div>
+                            <div class="dropdown-body">
+                                <ul>
+                                    <li class="current"><a href="~/en/login/login" title="">English</a></li>
+                                    <li><a href="~/es/login/login" title="">Español</a></li>
+                                    <li><a href="~/ca/login/login" title="">Català</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Language -->
+                        <!--CopyRight-->
+                        <p class="copyright">
+                            @MS.ExtranetResources.Resources.CopyRight
+                        </p>
+                        <!--CopyRight-->
+                    </div>
+                    <!-- End Footer Currency, Language -->
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+
+    </div>
+
+    <!-- Library JS -->
+    
+    @*<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>*@
+    <script type="text/javascript" src="~/Theme/js/library/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/parallax.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/jquery.mb.YTPlayer.min.js"></script>
+    <script type="text/javascript" src="~/Theme/js/library/SmoothScroll.js"></script>
+    <script src="~/js/Common.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <!-- End Library JS -->
+    <!-- Main Js -->
+    <script type="text/javascript" src="~/Theme/js/script.js"></script>
+    @RenderSection("ContentScripts", required: false)
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var url = window.location.pathname;
+            $('ul.user-profile__navigation li').each(function (indice, elemento) {
+                $(elemento).removeClass("current");
+                if (url.indexOf($(elemento).attr('id')) > 0) {
+                    $(elemento).addClass("current");
+                }
+            });
+
+        });
+    </script>
+    <!-- End Main Js -->
+</body>
+</html>

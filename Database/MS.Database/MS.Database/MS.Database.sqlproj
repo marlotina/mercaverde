@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MS.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{de5705e3-053c-4cfe-8b5c-ae999c76c171}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MS_Database</RootNamespace>
+    <AssemblyName>MS_Database</AssemblyName>
+    <ModelCollation>3082,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Modern_Spanish_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Scripts" />
+    <Folder Include="dbo\Functions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\TblUser.sql" />
+    <Build Include="dbo\Tables\TblCity.sql" />
+    <Build Include="dbo\Tables\TblPost.sql" />
+    <Build Include="dbo\Tables\TblPostComment.sql" />
+    <Build Include="dbo\Tables\TblStoreComment.sql" />
+    <Build Include="dbo\Tables\TblCountry.sql" />
+    <Build Include="dbo\Tables\TblTextLanguage.sql" />
+    <Build Include="dbo\Tables\TblTextType.sql" />
+    <Build Include="dbo\Tables\TblText.sql" />
+    <Build Include="dbo\Tables\TblLanguage.sql" />
+    <Build Include="dbo\Tables\TblCategory.sql" />
+    <Build Include="dbo\Tables\TblDistrict.sql" />
+    <Build Include="dbo\Tables\TblLabel.sql" />
+    <Build Include="dbo\Tables\TblStoreLabels.sql" />
+    <Build Include="dbo\Tables\TblBrand.sql" />
+    <Build Include="dbo\Tables\TblStoreCategories.sql" />
+    <Build Include="dbo\Tables\TblBrandCategories.sql" />
+    <Build Include="dbo\Tables\TblBrandLabels.sql" />
+    <Build Include="dbo\Tables\TblBrandComment.sql" />
+    <Build Include="dbo\Tables\TblTaskProcess.sql" />
+    <Build Include="dbo\Tables\TblStoreDescription.sql" />
+    <Build Include="dbo\Tables\TblCategoryLanguage.sql" />
+    <Build Include="dbo\Tables\TblCityLanguage.sql" />
+    <Build Include="dbo\Tables\TblCountryLanguage.sql" />
+    <Build Include="dbo\Tables\TblBrandImage.sql" />
+    <Build Include="dbo\Tables\TblStoreImage.sql" />
+    <Build Include="dbo\Tables\TblBrandDescription.sql" />
+    <Build Include="dbo\Tables\TblTextAndTextTypes.sql" />
+    <Build Include="dbo\Tables\TblLabelLanguage.sql" />
+    <Build Include="dbo\Stored Procedures\spGetTasksToProcess.sql" />
+    <Build Include="dbo\Tables\TblMailTemplate.sql" />
+    <Build Include="dbo\Tables\TblMailTemplateLanguage.sql" />
+    <Build Include="dbo\Stored Procedures\spGetMailTeamplateByLanguageId.sql" />
+    <Build Include="dbo\Tables\TblSubscribed.sql" />
+    <Build Include="Scripts\InitialScript.sql" />
+    <Build Include="dbo\Tables\TblSuggestingClients.sql" />
+    <None Include="dbo\Stored Procedures\spWebSearchList.sql" />
+    <Build Include="dbo\Tables\TblNews.sql" />
+    <Build Include="dbo\Tables\TblNewsComment.sql" />
+    <Build Include="dbo\Tables\TblEvent.sql" />
+    <None Include="dbo\Stored Procedures\spNewsWebSearchList.sql" />
+    <None Include="dbo\Stored Procedures\spEventsWebSearchList.sql" />
+    <None Include="dbo\Stored Procedures\spPostsWebSearchList.sql" />
+    <Build Include="Scripts\DateTestScript.sql" />
+    <Build Include="dbo\Stored Procedures\spGetCategoriesForWeb.sql" />
+    <Build Include="dbo\Functions\CustomSplit.sql" />
+    <None Include="dbo\Stored Procedures\spWebSearchMap.sql" />
+    <Build Include="dbo\Stored Procedures\spWebSearchMapFull.sql" />
+    <Build Include="dbo\Stored Procedures\spGetStoreDetail.sql" />
+    <Build Include="dbo\Tables\TblStore.sql" />
+    <Build Include="dbo\Stored Procedures\spGetLastStores.sql" />
+    <Build Include="dbo\Stored Procedures\spGetLabelsForWeb.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MS-Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSComparer.scmp" />
+  </ItemGroup>
+</Project>

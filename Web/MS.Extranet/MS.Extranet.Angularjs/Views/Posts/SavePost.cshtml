@@ -1,0 +1,109 @@
+﻿@using System.Web.UI.WebControls
+
+@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+}
+
+@section ContentScripts
+{
+    <script src="~/js/SavePostController.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/plugins/UploadPostImage/plugin.js"></script>
+    <script src="~/Scripts/tinymce/plugins/table/plugin.min.js"></script>
+    <script src="~/Scripts/tinymce/plugins/code/plugin.min.js"></script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            width: '100%',
+            height: 600,
+            statusbar: false,
+            menubar: false,
+
+            setup: function (ed) {
+                ed.on('init', function () {
+                    this.getDoc().body.style.fontSize = '14px';
+                    this.getDoc().body.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+                });
+            },
+
+            paste_data_images: true,
+
+            plugins: [
+                "advlist autolink lists link UploadPostImage charmap hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons textcolor colorpicker textpattern"
+            ],
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link UploadPostImage media | forecolor backcolor | table | code"
+        });
+
+        // Prevent bootstrap dialog from blocking focusin
+        $(document).on('focusin', function (e) {
+            if ($(e.target).closest(".mce-window").length) {
+                e.stopImmediatePropagation();
+            }
+        });
+    </script>
+}
+<div class="content container" style="padding-bottom: 10px;">
+    <div class="col-lg-12">
+        @Html.Hidden("HdnUserId", ViewData["IdUser"])
+        <div class="form-group">
+            <p class="text-info">@MS.ExtranetResources.Resources.PostExplainText1</p>
+            <p class="text-info">@MS.ExtranetResources.Resources.PostExplainText2</p>
+        </div>
+        <br />
+        <div data-ng-app data-ng-controller="savePostController">
+            <form name="savePostForm" data-ng="post" novalidate>
+                <div id="AlertSaveOk" class="alert alert-success" style="display:none">
+                    @MS.ExtranetResources.Resources.SaveOk
+                </div>
+                <div id="ReuiqredFiledPanel" class="alert alert-danger" style="display:none">
+                    *&nbsp;&nbsp;@MS.ExtranetResources.Resources.YouMustCompleteRequiredFields
+                </div>
+                @Html.Hidden("HdnPostId", ViewData["IdPost"] as int?, new { ng_model = "post.IdPost" })
+                <div class="form-group" ng-class="{ 'has-error' : savePostForm.titlePost.$invalid }">
+                    <label>@MS.ExtranetResources.Resources.Title&nbsp;*</label>
+                    <input class="form-control" name="titlePost" type="text" data-ng-model="post.Title" required />
+                </div>
+
+
+                <div class="form-group">
+                    <label>@MS.ExtranetResources.Resources.Text&nbsp;*</label>
+                    <textarea cols="80" id="Editor" name="postText" rows="20" data-ng-model="post.Text"></textarea>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error' : savePostForm.language.$invalid }">
+                    <label for="language">@MS.ExtranetResources.Resources.Language&nbsp;*</label>
+                    <select name="language" id="DdlLanguage" class="form-control" ng-model="post.LanguageId" required>
+                        @foreach (var item in (List<ListItem>)ViewData["DdlLanguageList"])
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </div>
+                <div id="ReuiqredFiledTextLengthMsg" class="form-group" style="display:none">
+                    <label class="text-danger">*</label>
+                    <label class="text-danger">@MS.ExtranetResources.Resources.TextTooShort</label>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="post.IsPublished">@MS.ExtranetResources.Resources.PublishPost
+                        </label>
+                    </div>
+                </div>
+
+                <div id="AlertPending" class="alert alert-success" ng-show="post.HasRevised && post.IsPublished">
+                    @MS.ExtranetResources.Resources.ReviewedPostBeforePublishing
+                </div>
+                <div id="AlertRevised" class="alert alert-warning" ng-show="post.IsPublished && !post.HasRevised">
+                    @MS.ExtranetResources.Resources.PostPublished
+                </div>
+                <button type="submit" data-ng-click="save(savePostForm.$valid)" class="btn btn-default loginBtn">@MS.ExtranetResources.Resources.Save</button>
+            </form>
+        </div>
+    </div>
+</div>

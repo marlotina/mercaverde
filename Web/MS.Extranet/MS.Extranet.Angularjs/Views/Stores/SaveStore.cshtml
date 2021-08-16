@@ -1,0 +1,314 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "ModifyView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+    <link href="~/js/uploadify/uploadify.css" rel="stylesheet" />
+}
+
+@section ContentScripts
+{
+<script src="~/Scripts/jquery.maskedinput.js"></script>
+    <script src="~/js/Common.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCdQ21JIOzJtz9ZJdpvfJdbAnlCt8WII64&libraries=places"></script>       
+    <script src="~/js/SaveStoreController.js"></script>
+    <script src="~/js/map.js"></script>
+
+
+}
+
+
+
+<div ng-app="multipleCtrlApp">
+
+    <div class="col-md-9">
+        @Html.Hidden("HdnUserId", ViewData["IdUser"])
+        @Html.Hidden("HdnStoreId", ViewData["IdStore"] as int?, new { ng_model = "store.IdStore" })
+        @Html.Hidden("HdnLanguageId", ViewData["IdLanguageId"] as int?)
+
+            <div class="tab-content">
+               
+                <div class="row" style="padding-top:20px;">
+                    <div id="AlertSaveOk" class="alert-box alert-success" style="display:none">
+                        @MS.ExtranetResources.Resources.SaveOk
+                    </div>
+                    <div id="ReuiqredFiledPanel" class="alert-box alert-error" style="display:none">
+                        *&nbsp;&nbsp;@MS.ExtranetResources.Resources.YouMustCompleteRequiredFields
+                    </div>
+                </div>
+                <div class="tab-pane fade in active" id="generalInfo-pills">
+                    <h3>General info</h3>
+                    
+                        <div data-ng-controller="saveStoreController">
+                            <form name="saveStoreForm" data-ng="store" class="form-horizontal" novalidate>
+
+                                <div class="row">
+                                    <label for="storename" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Name&nbsp;*</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.storename.$invalid }">
+                                        <input class="form-control" name="storename" type="text" data-ng-model="store.Name" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="storeOpeningHours" class="text-right col-sm-3">@MS.ExtranetResources.Resources.OpeningHours</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.storeOpeningHours.$invalid }">
+                                        <textarea rows="4" class="form-control" data-ng-model="store.TimeTable" name="storeOpeningHours"></textarea>
+                                        <div class="text-muted">
+                                            @MS.ExtranetResources.Resources.TimeTableExample
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="storeprefixphone" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Prefix&nbsp;*</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.storeprefixphone.$invalid }">
+                                        <input class="form-control" name="storeprefixphone" type="text" data-ng-model="store.PrefixPhone" required />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="storephone" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Phone&nbsp;*</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.storephone.$invalid }">
+                                        <input class="form-control" name="storephone" type="text" data-ng-model="store.Phone" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="storemail" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Email&nbsp;*</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.storemail.$invalid }">
+                                        <input class="form-control" name="storemail" type="email" data-ng-model="store.Email" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="storeweb" class="text-right col-sm-3">@MS.ExtranetResources.Resources.WebUrl</label>
+                                    <div class="col-sm-9 form-group">
+                                        <input class="form-control" name="storeweb" type="text" data-ng-model="store.WebUrl" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="text-right col-sm-3">@MS.ExtranetResources.Resources.City&nbsp;*</label>
+                                    <div class="col-sm-3 form-group" ng-class="{ 'has-error' : saveStoreForm.city.$invalid }">
+                                        <select name="city" id="DdlCities" class="form-control" ng-model="store.CityId" required>
+                                            @foreach (var item in (List<ListItem>)ViewData["DdlCityList"])
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <label class="text-right col-sm-3">@MS.ExtranetResources.Resources.Area&nbsp;*</label>
+                                    <div class="col-sm-3 form-group" ng-class="{ 'has-error' : saveStoreForm.district.$invalid }">
+                                        <select name="district" id="DdlDistricts" class="form-control" ng-model="store.DistrictId" required>
+                                            @foreach (var item in (List<ListItem>)ViewData["DdlDistricts"])
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="postalCode" class="text-right col-sm-3">@MS.ExtranetResources.Resources.PostalCode</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.PostalCode.$invalid }">
+                                        <input class="form-control" name="postalCode" type="text" data-ng-model="store.PostalCode" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="storeStreet" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Street&nbsp;*</label>
+                                    <div class="col-sm-9 form-group" ng-class="{ 'has-error' : saveStoreForm.storeStreet.$invalid }">
+                                        <p class="text-success">Ejemplo: Carrer del Rosselló, 180, Barcelona, España</p>
+                                        <input id="txtStreet" class="form-control" type="text" name="storeStreet" data-ng-model="store.Street" required>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="panel panel-default" style="height:402px">
+                                            <div id="map-canvas"></div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hdnLatitude" name="hdnLatitude" value="{{ store.Latitude }}" />
+                                    <input type="hidden" id="hdnLongitude" name="hdnLongitude" value="{{ store.Longitude }}" />
+                                </div>
+                                <br />
+                                <button type="submit" data-ng-click="save(saveStoreForm.$valid)" class="awe-btn awe-btn-1 awe-btn-medium">@MS.ExtranetResources.Resources.Save</button>
+
+                            </form>
+                        </div>
+                    </div>
+                <div class="tab-pane fade" id="description-pills">
+                    <h3>Description</h3>
+                    <div data-ng-controller="saveStoreDescriptionController">
+                        <form name="saveStoreDescriptionForm" data-ng="storeDescriptions" novalidate>
+                            <div class="col-md-12">
+                                <div data-ng-repeat="storeDescription in storeDescriptions.DescriptionList">
+                                    @Html.Hidden("HdnStoreLanguageId", new { ng_model = "storeDescription.IdLanguage" })
+
+                                    <div class="row">
+                                        <label for="storeTitle" class="text-right col-sm-3"></label>
+                                        <div class="col-sm-9 form-group">
+                                            <label for="storeTitle" class="titleMS">{{ storeDescription.LanguageName }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label for="storeTitle" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Title</label>
+                                        <div class="col-sm-9 form-group" ng-class="{ 'has-error' : storeDescription.Title.$invalid }">
+                                            <input class="form-control" name="storeTitle" type="text" data-ng-model="storeDescription.Title" required />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label for="storeShortDescription" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Description</label>
+                                        <div class="col-sm-9 form-group" ng-class="{ 'has-error' : storeDescription.ShortDescription.$invalid }">
+                                            <textarea class="form-control" rows="3" name="storeShortDescription" maxlength="300" type="text" data-ng-model="storeDescription.ShortDescription" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label for="storeDescription" class="text-right col-sm-3">@MS.ExtranetResources.Resources.Description</label>
+                                        <div class="col-sm-9 form-group" ng-class="{ 'has-error' : storeDescription.Description.$invalid }">
+                                            <textarea class="form-control" rows="3" name="storeDescription" type="text" data-ng-model="storeDescription.Description" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                            <br />
+                            <div class="row">
+                                <button type="submit" data-ng-click="save()" class="awe-btn awe-btn-1 awe-btn-medium">@MS.ExtranetResources.Resources.Save</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                
+                <div class="tab-pane fade" id="photo-pills">
+                    <h3>Photos</h3>
+                    <script src="~/js/uploadify/jquery.uploadify.js"></script>
+                    @*<script src="/mvc3/uploadify/swfobject.js" type="text/javascript"></script>*@
+                    <script src="~/js/jquery.ui.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            var urlService = '/api/Store/UploadImages?storeId=' + $("#HdnStoreId").val();
+                            $("#UploadStoreImage").uploadify({
+                                'swf': '@Url.Content("~/js/uploadify/uploadify.swf")',
+                                'uploader': urlService,
+                                'buttonText': '@MS.ExtranetResources.Resources.BrowseImages',
+                                'script': 'api/Store/UploadImages',
+                                'folder': 'uploads',
+                                'fileDesc': 'Image Files',
+                                'fileExt': '*.jpg;*.jpeg;*.gif;*.png',
+                                'multi': true,
+                                'auto': true,
+                                'onUploadSuccess': function () {
+                                    $('#getImageHdnButton').click();
+                                }
+                            });
+                        });
+
+                        $(function () {
+                            $("#sortable").sortable();
+                            $("#sortable").disableSelection();
+                        });
+                    </script>
+                    <div id="main">
+                        <input type="file" name="UploadStoreImage" id="UploadStoreImage" />
+                    </div>
+                    <div data-ng-controller="saveStoreImagesController">
+                        <ul id="sortable" class="list-inline">
+                            <li ng-repeat="storeImage in storeImages" id="{{storeImage.IdStoreImage}}" class="ui-state-default">
+                                <a class="thumbnail" href="#">
+                                    <img alt="image{{storeImage.IdStoreImage}}" ng-src="{{storeImage.ImageUrl }}" style="height: 180px; width: 200px; display: block;" data-holder-rendered="true">
+                                </a>
+                                <span class="glyphicon glyphicon-trash" data="{{storeImage.IdStoreImage}}" ng-click="deleteImage(storeImage.IdStoreImage)"></span>
+                                <br />
+                            </li>
+                        </ul>
+                        <br />
+                        <div>
+                            <input id="saveImageOrderHdnButton" type="button" ng-click="saveOrderImage()" style="display:none" />
+                            <input id="getImageHdnButton" type="button" ng-click="getImages()" style="display:none" />
+                        </div>
+                    </div>
+                    <input id="saveImageOrder" type="button" onclick="$('#saveImageOrderHdnButton').click();" value="@MS.ExtranetResources.Resources.Save" class="awe-btn awe-btn-1 awe-btn-medium" />
+                </div>
+              
+                <div class="tab-pane fade" id="category-pills">
+                    <h3>Categorías</h3>
+                    <div ng-controller="saveStoreClassificationController">
+                        <form name="savestoreCLassificationForm" data-ng="storeCLassification" novalidate>
+                            <div class="row">
+                                <div class="col-sm-12 form-group">
+                                    Tipo de tienda:
+                                    <div class="check-box" ng-repeat="category in storeCLassification.CategoryList">
+                                        <input id="category-{{category.Value}}" name="category-{{category.Value}}" type="checkbox" value="{{category.Value}}" ng-model="category.Checked" />
+                                        <label for="category-{{category.Value}}">{{category.Text}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    labesl:
+                                    <div class="check-box" ng-repeat="label in storeCLassification.LabelList">
+                                        <input id="label-{{label.Value}}" name="label-{{label.Value}}" type="checkbox" value="{{label.Value}}" ng-model="label.Checked" />
+                                        <label for="label-{{label.Value}}">{{label.Text}}</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+                            <input id="saveStoreClassification" type="button" data-ng-click="save()" value="@MS.ExtranetResources.Resources.Save" class="awe-btn awe-btn-1 awe-btn-medium" />
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="publish-pills">
+                    <h3>@MS.ExtranetResources.Resources.Publish</h3>
+                    <div ng-controller="saveStorePublishController">
+                        <form name="savestorePublishForm" data-ng="storePublish" novalidate>
+                           <div class="row">
+                                <div class="col-sm-12 form-group">
+                                    <div class="form-group">
+                                        <div class="check-box">
+                                            
+                                            <input id="published" name="published" type="checkbox" ng-model="storePublish.IsPublished">
+                                            <label for="published">Publicar tienda</label>
+                                        </div>
+                                    </div>
+                                    <div id="AlertPending" class="alert alert-success" ng-show="storePublish.HasRevised && storePublish.IsPublished">
+                                        @MS.ExtranetResources.Resources.ReviewedPostBeforePublishing
+                                    </div>
+                                    <div id="AlertRevised" class="alert alert-warning" ng-show="storePublish.IsPublished && !storePublish.HasRevised">
+                                        @MS.ExtranetResources.Resources.PostPublished
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="{{ storePublish.UrlStore }}">@MS.ExtranetResources.Resources.SeeYouStore</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <input id="saveStoreClassification" type="button" data-ng-click="save()" value="@MS.ExtranetResources.Resources.Save" class="awe-btn awe-btn-1 awe-btn-medium" />
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    
+    
+    <div class="col-sm-3">
+        <div class="widget widget_categories">
+            <h2 class="title-sidebar">Menú</h2>
+            <ul class="nav-pills nav-stacked">
+                <li class="active">
+                    <a href="#generalInfo-pills" data-toggle="tab">@MS.ExtranetResources.Resources.GeneralInfo</a>
+                </li>
+                <li class="@(ViewData["IdStore"].ToString() == "0" ? "disabled" : string.Empty)">
+                    <a href="#description-pills" data-toggle="tab">@MS.ExtranetResources.Resources.Description</a>
+                </li>
+                <li class="@(ViewData["IdStore"].ToString() == "0" ? "disabled" : string.Empty)">
+                    <a href="#photo-pills" data-toggle="tab">@MS.ExtranetResources.Resources.Images</a>
+                </li>
+                <li class="@(ViewData["IdStore"].ToString() == "0" ? "disabled" : string.Empty)">
+                    <a href="#category-pills" data-toggle="tab">@MS.ExtranetResources.Resources.Categories</a>
+                </li>
+                <li class="@(ViewData["IdStore"].ToString() == "0" ? "disabled" : string.Empty)">
+                    <a href="#publish-pills" data-toggle="tab">@MS.ExtranetResources.Resources.Publish</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

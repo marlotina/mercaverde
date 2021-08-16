@@ -1,0 +1,67 @@
+﻿
+@{
+    //ViewBag.Title = "EventList";
+    ViewBag.LanguageCode = ViewData["LanguageCode"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentScripts
+{
+    <script src="~/assets/plugins/bootstrap/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="~/assets/plugins/moment.min.js"></script>
+    <script src="~/assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="~/js/EventsListController.js"></script>
+}
+
+@section ContentStyles
+{
+    <link href="~/assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+}
+
+<div class="content container" ng-app="multipleCtrlApp">
+    <input type="hidden" id="hdnDate" value="" />
+    <div class="page-wrapper">
+        <header class="page-heading clearfix">
+            <h1 class="heading-title pull-left">Eventos</h1>
+            <div class="breadcrumbs pull-right">
+                <ul class="breadcrumbs-list">
+                    <li class="breadcrumbs-label">You are here:</li>
+                    <li><a href="index.html">Home</a><i class="fa fa-angle-right"></i></li>
+                    <li class="current">News</li>
+                </ul>
+            </div><!--//breadcrumbs-->
+        </header>
+        <div class="page-content">
+            <div class="row page-row">
+                <div class="col-md-12 col-sm-7">
+                    <input type="button" class="btn btn-theme read-more" style="float:left" id="prevMonth" value="<" />
+                    <input type="button" class="btn btn-theme read-more" style="float:right" id="nextMonth" value=">" />
+                </div>
+            </div>
+            <div class="row page-row">
+                <div class="events-wrapper col-md-6 col-sm-6" data-ng-controller="eventsListController">
+                    <article class="events-item page-row has-divider clearfix" ng-repeat="event in eventsList.ListEvents">
+                        <div class="date-label-wrapper col-md-1 col-sm-2">
+                            <p class="date-label">
+                                <span class="month">MAY</span>
+                                <span class="date-number">17</span>
+                            </p>
+                        </div>
+                        <div class="details col-md-11 col-sm-10">
+                            <h3 class="title">{{ event.Title }}</h3>
+                            <p class="meta"><span class="time"><i class="fa fa-clock-o"></i>14:00pm - 18:00pm</span><span class="location"><i class="fa fa-map-marker"></i><a href="#">Library</a></span></p>
+                            <p class="desc">{{ event.Text }}</p>
+                        </div>
+                    </article>
+                </div><!--//news-wrapper-->
+                <aside class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
+                    <div class="datepicker" id="datepicker"></div>
+                   
+                </aside>
+            </div>
+            <!--//page-row-->
+        </div><!--//page-content-->
+    </div><!--//page-->
+</div><!--//content-->
+
+

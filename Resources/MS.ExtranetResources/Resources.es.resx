@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptConditionsText" xml:space="preserve">
+    <value>Elmercadoverde garantiza que tratará los datos personales cumpliendo lo establecidos en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal (LOPD), Real Decreto 1720/2007, de 21 de diciembre, por el que se aprueba el Reglamento de desarrollo de la Ley Orgánica 15/1999 (RLOPD), y legislación en materia de servicios de la sociedad de la información y de comercio electrónico (LSSICE). A tal efecto, se han adoptado las medidas de carácter técnico y organizativo de seguridad en sus instalaciones, sistemas y ficheros./n
+En cumplimiento de lo dispuesto en la LOPD y RLOPD, siempre que se soliciten datos de carácter personal a un Usuario de la Web, se informará debidamente en cada caso como mínimo de la identidad del responsable del tratamiento, de la finalidad para la que se recaban los datos y de los derechos que le asisten.
+Mediante el registro y la aceptación de las condiciones generales del servicio, el Usuario de la Web, se considera legalmente informado y consiente a Perfumon.com a almacenar y tratar los datos de carácter personal facilitados en el registro, los derivados del uso del servicio, así como los resultantes de procesos informáticos con la finalidad de prestar el servicio solicitado por el cliente y hacerle partícipe del plan comercial, para lo que se realizarán segmentaciones sobre sus datos, estudios de mercado y elaboración de perfiles, derivados o no del análisis de sus hábitos de compra; tratamiento que permitirá aplicar ventajas, descuentos y ofertas adicionales al Cliente y recibir comunicaciones promocionales, cuyo envío, por medios electrónicos, se autoriza expresamente al solicitar el alta en el servicio. Esta información, ligada a la condición de Cliente y remitida directamente por Perfumon.com, podrá ser del sector estética, perfumería, droguería, ocio, cultura, tiempo libre, fidelización, deporte, alimentación, textil, hogar, carburantes, préstamos, seguros, ópticas, viajes, telecomunicaciones, medios de pago y consumo.
+Importante: En caso que no desear recibir información promocional, si el cliente cambia de opinión, o desea rectificar sus datos, puede acceder, en cualquier momento, a su ficha de registro, pulsando en “perfil, donde podrá modificar el criterio seleccionado y/o sus datos. En cualquier caso, el usuario puede ejercitar los derechos de oposición, acceso, rectificación y cancelación o revocar su consentimiento en cualquier momento, dirigiéndose por correo electrónico a info@elmercadoverde.es</value>
+  </data>
+  <data name="AcceptConditions" xml:space="preserve">
+    <value>Aceptar condiciones</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Año de nacimiento</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="BrandList" xml:space="preserve">
+    <value>Tus marcas</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Condiciones</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="CreateBrand" xml:space="preserve">
+    <value>Nueva marca</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Imágenes</value>
+    <comment>t</comment>
+  </data>
+  <data name="IsPublished" xml:space="preserve">
+    <value>Publicado</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="OpeningHours" xml:space="preserve">
+    <value>Horario</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Código postal</value>
+  </data>
+  <data name="PostHelpInfo" xml:space="preserve">
+    <value>Pasf sadf asdf dsa f asdf sadf asdf asd fasd f sadf sa fsad f asdf as df</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Prefijo</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publicar</value>
+  </data>
+  <data name="RepeatNewPasword" xml:space="preserve">
+    <value>Repita la nueva contraseña</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Española</value>
+  </data>
+  <data name="Store" xml:space="preserve">
+    <value>Tienda</value>
+  </data>
+  <data name="StoreList" xml:space="preserve">
+    <value>Tus tiendas</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Calle</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>Subir imagen</value>
+  </data>
+  <data name="WritePost" xml:space="preserve">
+    <value>Escribe un post!</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>Información general</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Abandonar sesión</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="GeneralData" xml:space="preserve">
+    <value>Datos generales</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="RegisterPlease" xml:space="preserve">
+    <value>Por favor, registrese</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Recordarme</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>Abril</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
+  <data name="BrowseImages" xml:space="preserve">
+    <value>Seleccione imagen</value>
+  </data>
+  <data name="ChangeRegistrationData" xml:space="preserve">
+    <value>Modificar datos de ingreso</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>Diciembre</value>
+  </data>
+  <data name="EnterYourCurrentPassword" xml:space="preserve">
+    <value>Introduce su contraseña actual</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Febrero</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Lo sentimos, hubo un problema y no se pudo realizar la acción</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Enero</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Julio</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Junio</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>Marzo</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Mayo</value>
+  </data>
+  <data name="Mes" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>Noviembre</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Octubre</value>
+  </data>
+  <data name="PasswordNotValid" xml:space="preserve">
+    <value>La contraseña no es válida</value>
+  </data>
+  <data name="PasswordOrUserNotValid" xml:space="preserve">
+    <value>El usuario o la contraseña no es válido</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Las contraseña no coinciden</value>
+  </data>
+  <data name="PleaseRegister" xml:space="preserve">
+    <value>Por favor, registrese</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrate</value>
+  </data>
+  <data name="RegisterNewUser" xml:space="preserve">
+    <value>Regitras nuevo usuario</value>
+  </data>
+  <data name="ReturnLogin" xml:space="preserve">
+    <value>Volver a iniciar sesión</value>
+  </data>
+  <data name="SelectedCountry" xml:space="preserve">
+    <value>Seleccione país</value>
+  </data>
+  <data name="SelectedLanguage" xml:space="preserve">
+    <value>Seleccionar idioma</value>
+  </data>
+  <data name="SelectProfilePhoto" xml:space="preserve">
+    <value>Seleccione su foto de perfil</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>Septiembre</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>Terminos de uso</value>
+  </data>
+  <data name="UserExist" xml:space="preserve">
+    <value>El usuario yexiste</value>
+  </data>
+  <data name="WebUrl" xml:space="preserve">
+    <value>Web Url</value>
+  </data>
+  <data name="WeSendMailWithYouPassword" xml:space="preserve">
+    <value>En breve recibira un mail con su nueva password.</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="YouMustAcceptConditions" xml:space="preserve">
+    <value>Debes aceptas las condiciones de uso</value>
+  </data>
+  <data name="CouldNotGetUploadedFile" xml:space="preserve">
+    <value>No se ha podido subir la imagen</value>
+  </data>
+  <data name="NotFileToUpload" xml:space="preserve">
+    <value>No hay fichero para subir</value>
+  </data>
+  <data name="CouldNotDeleteFile" xml:space="preserve">
+    <value>No se pudo borrar el fichero</value>
+  </data>
+  <data name="DontDoAction" xml:space="preserve">
+    <value>Lo sentimos, no se podu realizar la acción</value>
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="SubscribeOur" xml:space="preserve">
+    <value>Subscribirse a newsletter</value>
+  </data>
+  <data name="WeSendActivationMail" xml:space="preserve">
+    <value>En breve recibirá un correo para activar su usario. gracias por registrarse!</value>
+  </data>
+  <data name="SelectArea" xml:space="preserve">
+    <value>Seleccione area</value>
+  </data>
+  <data name="SelectCity" xml:space="preserve">
+    <value>Seleccione ciudad</value>
+  </data>
+  <data name="YouMustCompleteRequiredFields" xml:space="preserve">
+    <value>Debes completar todos los campos obligatorios (remarcados en rojo)</value>
+  </data>
+  <data name="PublishPost" xml:space="preserve">
+    <value>Publicar post</value>
+  </data>
+  <data name="Revised" xml:space="preserve">
+    <value>Revisado</value>
+  </data>
+  <data name="PostPublished" xml:space="preserve">
+    <value>El post ha sido publicado</value>
+  </data>
+  <data name="ReviewedPostBeforePublishing" xml:space="preserve">
+    <value>Revisaremos tu post antes de publicarlo para que se vea correctamente en la web. Gracias por participar en nuestra comunidad!</value>
+  </data>
+  <data name="SaveOk" xml:space="preserve">
+    <value>Información guardada correctamente!</value>
+  </data>
+  <data name="NewPasswordSaved" xml:space="preserve">
+    <value>Contraseña modificada</value>
+  </data>
+  <data name="PostExplainText1" xml:space="preserve">
+    <value>Aquí podrás escribir artículos, por ejemplo como hacéis vuestros productos, o articulos relacionados con vuestro trabajo, esto dara mayor visibilidad a vuestra tienda tanto en la página como en internet. A parte de ayudarnos a promocionar y concienciar a las personas el consumir productos sostenibles y conociendo su origen.</value>
+  </data>
+  <data name="PostExplainText2" xml:space="preserve">
+    <value>Una vez haya terminado de escribir el post y decidad publicarlo, revisaremos y puede ser que modifiquemos el texto para que se vea correctamente en la web.</value>
+  </data>
+  <data name="TextTooShort" xml:space="preserve">
+    <value>El texto es demasiado corto</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="LastActivity" xml:space="preserve">
+    <value>Last activity</value>
+  </data>
+  <data name="DontDeletePublishPost" xml:space="preserve">
+    <value>No se puede borrar un post publicado</value>
+  </data>
+  <data name="DontDeletePublishStore" xml:space="preserve">
+    <value>No se puede borrar una tienda publicada</value>
+  </data>
+  <data name="AddFirstStore" xml:space="preserve">
+    <value>Publica tu primera tienda!</value>
+  </data>
+  <data name="AddStore" xml:space="preserve">
+    <value>Nueva tienda</value>
+  </data>
+  <data name="PostList" xml:space="preserve">
+    <value>Tus posts</value>
+  </data>
+  <data name="WriteFirstPost" xml:space="preserve">
+    <value>Escribe tu primer post!</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>El usuario no existe</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="TimeTableExample" xml:space="preserve">
+    <value>Introudce un horario, puedes copiar este formato y sustituir la fechas:
+                                        Lunes - Viernes : 10:00 - 14:00 a 16:00 - 20:00 
+                                        Sabdao: 10:00 - 22:00</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>Introudce un horario, puedes copiar este formato y sustituir la fechas:</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Lunes - Viernes : 10:00 - 14:00 a 16:00 - 20:00</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Sabdao: 10:00 - 22:00</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categorías</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="ContactWithUs" xml:space="preserve">
+    <value>Contacta con Nosotros!</value>
+  </data>
+  <data name="CookieInformation" xml:space="preserve">
+    <value>Cookie Information</value>
+  </data>
+  <data name="CopyRight" xml:space="preserve">
+    <value>.© 2016 Poblamarket™ All rights reserved.</value>
+  </data>
+  <data name="DescriptionAboutYou" xml:space="preserve">
+    <value>Describite</value>
+  </data>
+  <data name="HaveStore" xml:space="preserve">
+    <value>Have you got store?</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="LoginText" xml:space="preserve">
+    <value>Login and see your stores and comments!</value>
+  </data>
+  <data name="MemberSince" xml:space="preserve">
+    <value>Member since</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="PrivateInformation" xml:space="preserve">
+    <value>Private rules</value>
+  </data>
+  <data name="RecoverPasswordText" xml:space="preserve">
+    <value>Insert your email and you will received a new password</value>
+  </data>
+  <data name="RegisterText" xml:space="preserve">
+    <value>Register like a new user</value>
+  </data>
+  <data name="SeeYouStore" xml:space="preserve">
+    <value>See you store!</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="TellMeUs" xml:space="preserve">
+    <value>Suegerenia, duda o hasta crítica!</value>
+  </data>
+  <data name="Wellcome" xml:space="preserve">
+    <value>Wellcome!</value>
+  </data>
+  <data name="WhoInformation" xml:space="preserve">
+    <value>Who we are</value>
+  </data>
+</root>

@@ -1,0 +1,102 @@
+﻿@{
+    //ViewBag.Title = "NewsList";
+    ViewBag.LanguageCode = ViewData["LanguageCode"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentScripts
+{
+    <script src="~/assets/plugins/bootstrap/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="~/js/NewsListController.js"></script>
+    
+}
+
+
+<div class="content container" ng-app="multipleCtrlApp">
+    @Html.Hidden("hdnIdLanguage", ViewData["IdLanguage"])
+    <div class="page-wrapper">
+        <header class="page-heading clearfix">
+            <h1 class="heading-title pull-left">Noticias</h1>
+            <div class="breadcrumbs pull-right">
+                <ul class="breadcrumbs-list">
+                    <li class="breadcrumbs-label">You are here:</li>
+                    <li><a href="~/@ViewBag.LanguageCode/Home/">Home</a><i class="fa fa-angle-right"></i></li>
+                    <li class="current">News</li>
+                </ul>
+            </div><!--//breadcrumbs-->
+        </header>
+        <div class="page-content">
+            <div class="row page-row">
+                <div class="news-wrapper col-md-8 col-sm-7" data-ng-controller="newsListController">
+                    <input type="hidden" id="hdnNumPages" >
+                    <article class="news-item page-row has-divider clearfix row" ng-repeat="news in newsList.ListNews">
+                        <figure class="thumb col-md-2 col-sm-3 col-xs-4">
+                            <img class="img-responsive" src="~/assets/images/news/news-thumb-1.jpg" alt="" />
+                        </figure>
+                        <div class="details col-md-10 col-sm-9 col-xs-8">
+                            <h3 class="title"><a href="{{ news.Url }}">{{ news.Title }}</a></h3>
+                            <p class="meta"><span class="time"><i class="fa fa-calendar-o"></i> {{ news.PublishDate }}</span></p>
+                            <p>{{ news.Text }}</p>
+                            <a class="btn btn-theme read-more" href="{{ news.Url }}">Read more<i class="fa fa-chevron-right"></i></a>
+                        </div>
+                    </article>
+                    <pagination ng-model="currentPage"
+                                total-items="newsList.TotalItems"
+                                max-size="maxSize"
+                                boundary-links="true"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                    </pagination>
+                </div><!--//news-wrapper-->
+                <aside class="page-sidebar  col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1">
+                    <section class="widget has-divider">
+                        <h3 class="title">Arcu Aliquet Quam Vel</h3>
+                        <p>Maecenas nisl urna, condimentum ac justo a, adipiscing hendrerit magna. Fusce pharetra laoreet accumsan. Phasellus elit sapien, consequat vel sapien sit amet, condimentum vulputate odio. Aliquam fringilla justo quis est placerat, eu imperdiet lorem cursus. Curabitur pretium nulla lorem, sed egestas ante vestibulum dignissim.</p>
+                    </section><!--//widget-->
+                    <section class="widget has-divider">
+                        <h3 class="title">Upcoming Events</h3>
+                        <article class="events-item row page-row">
+                            <div class="date-label-wrapper col-md-3 col-sm-4 col-xs-4">
+                                <p class="date-label">
+                                    <span class="month">FEB</span>
+                                    <span class="date-number">18</span>
+                                </p>
+                            </div><!--//date-label-wrapper-->
+                            <div class="details col-md-9 col-sm-8 col-xs-8">
+                                <h5 class="title">Open Day</h5>
+                                <p class="time text-muted">10:00am - 18:00pm<br />East Campus</p>
+                            </div><!--//details-->
+                        </article>
+                        <article class="events-item row page-row">
+                            <div class="date-label-wrapper col-md-3 col-sm-4 col-xs-4">
+                                <p class="date-label">
+                                    <span class="month">SEP</span>
+                                    <span class="date-number">06</span>
+                                </p>
+                            </div><!--//date-label-wrapper-->
+                            <div class="details col-md-9 col-sm-8 col-xs-8">
+                                <h5 class="title">E-learning at College Green</h5>
+                                <p class="time text-muted">10:00am - 16:00pm<br />Learning Center</p>
+                            </div><!--//details-->
+                        </article>
+                        <article class="events-item row page-row">
+                            <div class="date-label-wrapper col-md-3 col-sm-4 col-xs-4">
+                                <p class="date-label">
+                                    <span class="month">JUN</span>
+                                    <span class="date-number">23</span>
+                                </p>
+                            </div><!--//date-label-wrapper-->
+                            <div class="details col-md-9 col-sm-8 col-xs-8">
+                                <h5 class="title">Career Fair</h5>
+                                <p class="time text-muted">09:45am - 16:00pm<br />Library</p>
+                            </div><!--//details-->
+                        </article>
+                    </section><!--//widget-->
+                    <section class="widget">
+                        <h3 class="title">Flickr Photo Stream</h3>
+                        <ul id="flickr-photos"></ul><!--//flickr-photos-->
+                    </section><!--//widget-->
+                </aside>
+            </div><!--//page-row-->
+        </div><!--//page-content-->
+    </div><!--//page-->
+</div><!--//content-->

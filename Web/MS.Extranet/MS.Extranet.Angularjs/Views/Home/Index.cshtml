@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "FriendView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ContentStyles
+{
+    <link href="~/css/msStyle.css" rel="stylesheet" />
+}
+    
+    <div class="col-md-12">
+        <div class="marketing">
+            @*<h1>@MS.WebResources.Resources.prueba</h1>*@
+            <section class="course-finder">
+                <h1 class="section-heading text-highlight"></h1>
+                <div class="section-content">
+                    <div class="col-lg-4">
+                        <img width="140" height="140" alt="Generic placeholder image" src="~/Images/HomePerfil.png" class="img-circle">
+                        <h2>Perfil</h2>
+                        <p>Completa los datos de tu perfil para tener una mejor visibilidad</p><br />
+                        <p><a role="button" href="/account/modifyuser/@ViewData["IdUser"]" class="btn btn-default loginBtn">Editar perfil »</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img width="140" height="140" alt="Generic placeholder image" src="~/Images/HomeStore.png" class="img-circle">
+                        <h2>Comercio</h2>
+                        <p>Sube tu comercio a nuestra web y nuestros visitantes podrán encontrate y conocer tu negocio</p>
+                        <p><a role="button" href="/stores/savestore" class="btn btn-default loginBtn">Subir un comercio »</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img width="140" height="140" alt="Generic placeholder image" src="~/Images/HomeWritePost.png" class="img-circle">
+                        <h2>Posts</h2>
+                        <p>Quieres publicar una noticia o escribir sobre algún tema. Te dara mayor visibilidad</p>
+                        <p><a role="button" href="/posts/savePost" class="btn btn-default loginBtn">Escribir un post »</a></p>
+                    </div>
+                </div>
+            </section>
+            <br/>
+            <section class="course-finder">
+                 <div class="section-content">
+                    <div class="col-md-7">
+                        @*<h2>Ten tu perfil completo <span class="text-muted">Presentate!</span></h2>*@
+                        Nuestro objetivo es fomentar el comsumo de los comercios sostenibles y conscientes con el medio ambiente y en el mundo en el que vivimos.
+                    </div>
+                    <div class="col-md-5">
+                        <img alt="Generic placeholder image" src="~/Images/eco-friendly-logo.png" class="img-responsive center-block">
+                    </div>
+                </div><!--//section-content-->
+            </section>
+
+            <section class="course-finder">
+                <div class="col-md-7 col-md-push-5">
+                    <p class="lead">Aquí queremos abrir una ventana a la gente para que pueda encontrar en su entorno cercano todos los comercios que necesite. El pequeño comercio da vida a las calles de nuestras ciudades.</p>
+                </div>
+                <div class="col-md-5 col-md-pull-7">
+                    <img alt="Generic placeholder image" src="~/Images/comercio_local.jpg" class="img-responsive center-block">
+                </div>
+            </section>
+
+            <section class="course-finder">
+                <div class="section-content">
+                    <div class="col-md-7">
+                        <p class="lead">Tienes una idea, una noticia, quieres hablar de como se realizan los productos que compráis, explicar porque montasteis el comercio. Escribe un post y cuentaselo a nuestra comundiad!</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img alt="Generic placeholder image" data-src="holder.js/500x500/auto" class="img-responsive center-block">
+                    </div>
+                </div><!--//section-content-->
+            </section>
+        </div>
+    </div>
